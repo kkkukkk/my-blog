@@ -3,11 +3,12 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # my-blog 레포지토리의 main 브랜치
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -15,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '18'  # 필요한 Node.js 버전
 
       - name: Install dependencies
         run: yarn install
@@ -26,5 +27,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.PAT_TOKEN }}  # 변경된 부분
-          publish_dir: ./out
+          github_token: ${{ secrets.PAT_TOKEN }}  # Personal Access Token
+          publish_dir: ./out  # export된 파일이 위치하는 경로
