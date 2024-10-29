@@ -33,8 +33,9 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.DEPLOY_KEY }}
-          publish_dir: ./out  # 빌드 결과물 디렉토리
-          publish_branch: gh-pages  # 배포할 브랜치
-          commit_message: "Deploy to GitHub Pages"  # 커밋 메시지
+          github_token: ${{ secrets.PAT_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
+          commit_message: "Deploy to GitHub Pages"
           external_repository: kkkukkk/kkkukkk.github.io
+          deploy_key: ${{ secrets.DEPLOY_KEY }}  # SSH deploy key
