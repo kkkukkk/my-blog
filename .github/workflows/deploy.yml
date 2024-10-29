@@ -34,4 +34,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  # GitHub 토큰을 사용하여 권한 설정
         run: |
           touch out/.nojekyll
-          npx gh-pages -d out --branch gh-pages --message "Deploy to GitHub Pages" --token $GITHUB_TOKEN
+          npx gh-pages -d out --branch gh-pages --message "Deploy to GitHub Pages"
