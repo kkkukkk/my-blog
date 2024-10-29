@@ -27,6 +27,9 @@ jobs:
       - name: Create .nojekyll
         run: touch out/.nojekyll  # .nojekyll 파일 생성
 
+      - name: List out directory
+        run: ls -la out  # out 디렉토리의 내용을 출력
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
