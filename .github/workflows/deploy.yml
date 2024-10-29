@@ -21,10 +21,17 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build and Delpoy
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  # Personal Access Token
+      - name: Build
+        run: yarn build
+
+      - name: Configure Git
         run: |
-          yarn build
+          git config --global user.email "jin960828@naver.com"
+          git config --global user.name "kkkukkk"
+
+      - name: Deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  # GitHub 토큰을 사용하여 권한 설정
+        run: |
           touch out/.nojekyll
           npx gh-pages -d out
