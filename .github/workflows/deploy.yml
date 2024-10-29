@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Setup Node.js
@@ -21,11 +21,10 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build and export
-        run: yarn build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.PAT_TOKEN }}  # Personal Access Token
-          publish_dir: ./out  # export된 파일이 위치하는 경로
+      - name: Build and Delpoy
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  # Personal Access Token
+        run: |
+          yarn build
+          touch out/.nojekyll
+          npx gh-pages -d out
