@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # main 브랜치에 푸시될 때 워크플로 실행
+      - main
 
 jobs:
   deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'  # 사용하려는 Node.js 버전
+          node-version: '18'
 
       - name: Install dependencies
         run: yarn install
@@ -25,10 +25,10 @@ jobs:
         run: yarn build
 
       - name: Create .nojekyll
-        run: touch out/.nojekyll  # .nojekyll 파일 생성
+        run: touch out/.nojekyll
 
-      - name: List out directory
-        run: ls -la out  # out 디렉토리의 내용을 출력
+      - name: Start SSH agent
+        run: eval $(ssh-agent -s)
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
