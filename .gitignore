@@ -410,5 +410,4 @@ dist
 !.yarn/sdks
 !.yarn/versions
 
-.next
 .next/*
